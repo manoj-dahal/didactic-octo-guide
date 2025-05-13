@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Form -->
+        <div id="loginContainer" class="container">
+            <div class="login-form">
+                <h1>Admin Login</h1>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div id="loginStatus" class="status-message"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboardContainer" class="container hidden">
+            <header class="dashboard-header">
+                <h1>Portfolio Admin Dashboard</h1>
+                <button id="logoutBtn" class="btn btn-danger">Logout</button>
+            </header>
+
+            <div class="dashboard-content">
+                <nav class="sidebar">
+                    <ul>
+                        <li><a href="#" class="active" data-section="projects">Projects</a></li>
+                        <li><a href="#" data-section="messages">Contact Messages</a></li>
+                    </ul>
+                </nav>
+
+                <main class="main-content">
+                    <!-- Projects Section -->
+                    <section id="projectsSection" class="dashboard-section">
+                        <div class="section-header">
+                            <h2>Manage Projects</h2>
+                            <button id="addProjectBtn" class="btn btn-success">Add New Project</button>
+                        </div>
+                        <div class="projects-list">
+                            <table id="projectsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="projectsTableBody">
+                                    <!-- Projects will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Messages Section -->
+                    <section id="messagesSection" class="dashboard-section hidden">
+                        <div class="section-header">
+                            <h2>Contact Messages</h2>
+                        </div>
+                        <div class="messages-list">
+                            <table id="messagesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="messagesTableBody">
+                                    <!-- Messages will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <!-- Project Form Modal -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="projectModalTitle">Add New Project</h2>
+                <form id="projectForm">
+                    <input type="hidden" id="projectId">
+                    <div class="form-group">
+                        <label for="projectTitle">Title</label>
+                        <input type="text" id="projectTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" name="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectImage">Project Image</label>
+                        <input type="file" id="projectImage" name="project_image" accept="image/*">
+                        <div class="image-preview-container">
+                            <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 200px; margin-top: 10px;">
+                        </div>
+                        <input type="hidden" id="projectImageUrl" name="image_url">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectUrl">Project URL (optional)</label>
+                        <input type="text" id="projectUrl" name="project_url">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Project</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
